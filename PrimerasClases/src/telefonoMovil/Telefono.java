@@ -1,7 +1,7 @@
 package telefonoMovil;
 
 public class Telefono {
-	private boolean estado = true;
+	private boolean encendido = false;
 	private int bateria = 20;
 	private boolean consumo = false;
 	private String modelo;
@@ -13,35 +13,41 @@ public class Telefono {
 	}
 	
 	public void botonEncendido() {
-		estado = estado ? false : true; 
+		encendido = encendido ? false : true; 
 	}
 	
 	public void estadoTelefono() {
-		if (estado) {
-			System.out.printf("El teléfono %S se encuentra encendido con una batería de %d.%n", modelo, bateria);
+		if (encendido) {
+			System.out.printf("El teléfono %S se encuentra encendido con una batería de %d %%.%n", modelo, bateria);
 		}else {
 			System.out.printf("El teléfono %S está apagado.%n", modelo);
 		}
 	}
 	
 	public void hacerLLamada() {
-		if (bateria >= 2 && bateria <= 100) {
+		if (bateria >= 2 && bateria <= 100 && encendido) {
 			bateria-= 2;
 			this.bajoConsumo();
 		}
+		
 		if (bateria < 2) {
+			bateria = 0;
 			this.apagadoTelefono();
 		}
+		
 	}
 	
 	public void navegarInternet() {
-		if (bateria >= 1 && bateria <= 100 && estado) {
-			bateria-= 1;
+		if (bateria >= 2 && bateria <= 100 && encendido) {
+			bateria--;
 			this.bajoConsumo();
 		}
+		
 		if (bateria < 2) {
+			bateria = 0;
 			this.apagadoTelefono();
 		}
+		
 	}
 	
 	public void bajoConsumo() {
@@ -53,31 +59,31 @@ public class Telefono {
 	
 	public void consultarBajoConsumo() {
 		if (consumo) {
-			System.out.printf("El teléfono %S %S esta en modo BAJO consumo y la batería es %d.%n", marca, modelo, bateria);
+			System.out.printf("El teléfono %S %S esta en modo BAJO consumo y la batería es %d %%.%n", marca, modelo, bateria);
 		}else {
-			System.out.printf("El teléfono %S %S esta en modo NORMAL DE consumo y su batería es %d.%n.", marca, modelo, bateria);
+			System.out.printf("El teléfono %S %S esta en modo NORMAL DE consumo y su batería es %d %%.%n.", marca, modelo, bateria);
 		}
 	}
 	
 	public void recargaBateria() {
-		if (bateria >= 0 && bateria <= 100) {
+		if (bateria >= 0 && bateria <= 75) {
 			bateria+= 25;
 			consumo = false;
-			estado = true;
+			encendido = true;
 		}
 	}
 	
 	public void apagadoTelefono() {
-		estado = false;
+		encendido = false;
 		System.out.println("El teléfono se ha apagado por poca bateria.");
 	}
 	
-	public boolean isEstado() {
-		return estado;
+	public boolean isEncendido() {
+		return encendido;
 	}
 
-	public void setEstado(boolean estado) {
-		this.estado = estado;
+	public void setEncendido(boolean encendido) {
+		this.encendido = encendido;
 	}
 
 	public int getBateria() {
@@ -114,6 +120,7 @@ public class Telefono {
 	
 	public static void main(String[] args) {
 		Telefono t1 = new Telefono("n6", "nokia");
+		t1.botonEncendido();
 		t1.estadoTelefono();
 		t1.hacerLLamada();
 		t1.estadoTelefono();
