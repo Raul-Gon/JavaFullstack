@@ -71,5 +71,28 @@ public class Reloj {
 		en24Horas = !en24Horas;
 		return true;
 	}
+	
+	public boolean reiniciar() {
+		if ( horas == 12 && minutos == 0 ) {
+			horas = 0;
+			minutos = 0;			
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean setHora(int horas, int minutos) {
+		if (horas <23 && horas >= 0 && minutos < 59 && minutos >= 0) {
+			this.horas = horas;
+			this.minutos = minutos;
+			return true;
+		}
+		return false;
+	}
+	
+	public static void main(String[] args) {
+		
+		
+	}
 
 }
