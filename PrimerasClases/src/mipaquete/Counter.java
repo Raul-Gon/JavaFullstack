@@ -1,13 +1,26 @@
 package mipaquete;
 
 public class Counter {
-	int value = 0;
-	int maxValue = 100_000;
-	String model = "N-COUNTER";
 	
+	//PROPIEDADES
+	private static int numeroContador = 0;
+	
+	private int id;
+	private int value = 0;
+	private int maxValue = 100_000;
+	private String model = "N-COUNTER";
+	
+	//VALIDACIONES
+	private static String devuelveModeloCorrecto(String model) {
+		return model == null || model.equals("") ? "N_COUNTER" : model;
+	}
+	
+	//CONSTRUCTORES
 	public Counter(int maxValue, String model) {
 		this.maxValue = maxValue > 10 ? maxValue : 10;
-		this.model = model;
+		this.model = devuelveModeloCorrecto(model);
+		numeroContador++;
+		id = numeroContador * 2;
 	}
 	
 	public Counter(int maxValue) {
@@ -22,10 +35,14 @@ public class Counter {
 		value = c.value;
 		maxValue = c.maxValue;
 		model = c.model;
+		numeroContador++;
+		id = numeroContador * 2;
 	}	
 	
+	//METODOS
 	public void show() {
-		System.out.printf("Contador: modelo (%s) y valor %d de %d.%n", model, value, maxValue);
+		System.out.printf("Contador: modelo (%s) y id: %d y valor %d de %d.%n", model, id, value, maxValue);
+		System.out.printf("Contadores Creados en TOTAL: %d.%n", numeroContador);
 	}
 	
 	public boolean increment() {
@@ -68,6 +85,40 @@ public class Counter {
 		return false;
 	}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public static int getNumeroContador() {
+		return numeroContador;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public int getMaxValue() {
+		return maxValue;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public static long sumarValoresArray(Counter [] array) {
+		long total = 0;
+		for (Counter counter : array) {
+			total += counter.value;
+		}
+		
+		return total;		
+	}
+	
+	//MAIN
 	public static void main(String[] args) {
 		
 		Counter c1 = new Counter();
@@ -91,10 +142,16 @@ public class Counter {
 		Counter c4 = new Counter(c3);
 		c4.show();
 		
+		System.out.println();
+		System.out.printf("Intentamos resetear los contadors %d y %d :%n", c4.id, c2.id);
+		System.out.println("==========================================");
 		System.out.println(c4.reset());
 		c4.show();
 		System.out.println(c2.reset());
 		c2.show();
+		
+		Counter [] arrayContadores = {c1, c2, c3, c4};
+		System.out.printf("El total de la suma de los valores de todos los contadores es: %d.%n", sumarValoresArray(arrayContadores));
 		
 	}
 }
