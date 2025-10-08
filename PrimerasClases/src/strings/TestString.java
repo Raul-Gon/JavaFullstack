@@ -99,11 +99,11 @@ public class TestString {
 		System.out.println();
 		System.out.println("indexOf(int ch) indexOf(int ch, int fromIndex) indexOf(String str) indexOf(String str, int fromIndex):");
 		System.out.println("======================================================================================================");
-		String 1s = "animals";
-		System.out.println(1s.indexOf('a'));      // 0
-		System.out.println(1s.indexOf("al"));     // 4
-		System.out.println(1s.indexOf('a', 4));   // 4 
-		System.out.println(1s.indexOf("al", 5));  // -1
+		String s111 = "animals";
+		System.out.println(s111.indexOf('a'));      // 0
+		System.out.println(s111.indexOf("al"));     // 4
+		System.out.println(s111.indexOf('a', 4));   // 4 
+		System.out.println(s111.indexOf("al", 5));  // -1
 		
 
 	}
