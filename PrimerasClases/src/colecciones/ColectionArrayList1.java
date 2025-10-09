@@ -3,7 +3,7 @@ package colecciones;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ColectioneArrayList1 {
+public class ColectionArrayList1 {
 
 	public static void main(String[] args) {
 		//CON ARRAYS UNA OPERACION PARA AÑADIR UN NUMREO
