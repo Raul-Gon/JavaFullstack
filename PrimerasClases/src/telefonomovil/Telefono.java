@@ -1,4 +1,4 @@
-package telefonoMovil;
+package telefonomovil;
 
 public class Telefono {
 	private boolean encendido = false;

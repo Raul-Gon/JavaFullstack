@@ -1,4 +1,4 @@
-package paqueteDados;
+package paquetedados;
 
 import java.util.Random;
 
