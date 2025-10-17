@@ -10,7 +10,7 @@ public class MiPrograma {
 	
 	public static void main(String[] args) {
 
-		String[] colores = {"negro", "azul", "marron", "gris", "verde", "naranja", "rosa", "purpura", "rojo", "blanco", "amarillo"};
+		String[] colores = {"negro", "azul", "marrón", "gris", "verde", "naranja", "rosa", "púrpura", "rojo", "blanco", "amarillo"};
 		Random random = new Random();
 		
 		System.out.println("\033[35mArray de cuadrados:");
@@ -24,8 +24,10 @@ public class MiPrograma {
 		}
 		
 		System.out.println();
-		System.out.println("\033[35mArray de rectangulos:");
-		System.out.println("=====================\u001B[0m");
+		System.out.println("\033[35mObtener un listado de cuadrados con perimetro mayor a la media:");
+		System.out.println("===============================================================\u001B[0m");
+		
+		
 		
 	}
 
