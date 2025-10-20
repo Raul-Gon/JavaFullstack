@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class MiPrograma {
 	
-	public static void m(ArrayList<Figura> figuras, String tipoCalculo,) {
+	public static void m(ArrayList<Figura> figuras, String tipoCalculo) {
 		System.out.println();
 		System.out.printf("\033[35mObtener un listado de Cuadrados con areas mayor a la media:");
 		System.out.println("===============================================================\u001B[0m");
