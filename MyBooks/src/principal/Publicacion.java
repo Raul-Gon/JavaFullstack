@@ -34,9 +34,19 @@ public abstract class Publicacion implements CanRead {
 	public String getTitulo() {
 		return titulo;
 	}
+	public double getPrecio() {
+		return precio;
+	}
+	public int getId() {
+		return id;
+	}
 	public int getPagActual() {
 		return pagActual;
 	}
+	
+	//metodo abstracto a implementar en los herederos
+	public abstract void imprimeLaParteDelHijo();
+	
 	//metodo toString()
 	@Override
 	public String toString() {		
@@ -48,13 +58,21 @@ public abstract class Publicacion implements CanRead {
 	public void leePagina(boolean silenciosamente) {		
 		if (!leido) {
 			if (pagActual  < numPags) {
-				System.out.printf("Página %d leída ", pagActual);
 				pagActual++;
+				if (!silenciosamente) {
+					System.out.printf("Página %d leída ", pagActual - 1);
+					imprimeLaParteDelHijo();
+				}				
 			}else if (pagActual == numPags) {
-				System.out.printf("Última página (%d) leída ", pagActual);
 				leido = true;
+				if (!silenciosamente) {
+					System.out.printf("Última página (%d) leída ", pagActual);
+					imprimeLaParteDelHijo();
+				}
 			}
-		}		
+		}else {
+			if (!silenciosamente) System.out.printf("%s ya ha sido leido.%n", getTitulo());
+		}	
 	}
 
 	//metodos

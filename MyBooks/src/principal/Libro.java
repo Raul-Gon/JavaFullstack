@@ -28,22 +28,12 @@ public class Libro extends Publicacion {
 		super.show();
 	}
 		
-	public void leePagina(boolean silenciosamente) {		
-		if (!isLeido()) {		
-			if (super.getPagActual() < super.getNumPags()) {
-				super.leePagina(true);
-				System.out.printf("del libro titulado %s del autor %s.%n", super.getTitulo(), autor);
-			}else if (super.getPagActual()  == super.getNumPags()) {
-				super.leePagina(true);
-				System.out.printf("del libro titulado %s del autor %s.%n", super.getTitulo(), autor);
-			}		
-		}else {
-			System.out.printf("Libro titulado %s del autor %s ya ha sido leido.%n", super.getTitulo(), autor);
-		}		
-	}
-	
 	public static void leePaginaStatic(boolean silenciosamente, Libro lib) {
 		lib.leePagina(silenciosamente);
 	}
 	
+	@Override
+	public void imprimeLaParteDelHijo() {
+		System.out.printf("del libro titulado %s del autor %s.%n", getTitulo(), autor);		
+	}	
 }
